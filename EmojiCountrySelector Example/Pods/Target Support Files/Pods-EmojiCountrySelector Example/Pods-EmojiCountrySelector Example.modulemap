@@ -1,0 +1,6 @@
+framework module Pods_EmojiCountrySelector_Example {
+  umbrella header "Pods-EmojiCountrySelector Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

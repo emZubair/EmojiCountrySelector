@@ -1,0 +1,16 @@
+PODS:
+  - EmojiCountrySelector (0.0.1)
+
+DEPENDENCIES:
+  - EmojiCountrySelector (from `../EmojiCountrySelector`)
+
+EXTERNAL SOURCES:
+  EmojiCountrySelector:
+    :path: "../EmojiCountrySelector"
+
+SPEC CHECKSUMS:
+  EmojiCountrySelector: bc7f0e697eb970d59ddd4b5e465512dfccf07645
+
+PODFILE CHECKSUM: 28c43212b3067e0ac50d8e0b16f072fc91836394
+
+COCOAPODS: 1.7.3
