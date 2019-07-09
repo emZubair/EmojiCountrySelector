@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Country {
+public struct Country {
     let name:String
     let flagEmoji:String
     let phoneCode:String

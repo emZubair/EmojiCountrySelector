@@ -8,20 +8,20 @@
 
 import UIKit
 
-protocol CountryPickerDelegate:class {
+public protocol ECCCountryPickerDelegate:class {
     func didSelectCountry(country: Country)
 }
 
-@IBDesignable class ECCCountryPickerTextField: UITextField {
+@IBDesignable public class ECCCountryPickerTextField: UITextField {
     
     fileprivate var countries = [Country]()
-    weak fileprivate var pickerDelegate: CountryPickerDelegate?
+    weak fileprivate var pickerDelegate: ECCCountryPickerDelegate?
     weak fileprivate var containverViewController:UIViewController?
     
     let screenSize = UIScreen.main.bounds
     public let pickerView = UIPickerView()
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         populateCountryList()
         setupPicker()
         createToolbar()
@@ -29,7 +29,7 @@ protocol CountryPickerDelegate:class {
         text = selectedCountry?.countryFlagAndCode()
     }
     
-    public func set(picker delegate:CountryPickerDelegate, from viewController:UIViewController) {
+    public func set(picker delegate:ECCCountryPickerDelegate, from viewController:UIViewController) {
         pickerDelegate = delegate
         containverViewController = viewController
     }
@@ -97,34 +97,25 @@ protocol CountryPickerDelegate:class {
 
 extension ECCCountryPickerTextField: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return countries.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         didSelectCountry(country: countries[row])
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        let view = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: screenSize.width, height: screenSize.height * 0.15)))
-        let label = PaddingLabel(frame: view.frame)
-//        let label = UILabel(frame: view.frame)
-        let label2 = PaddingLabel(frame: view.frame)
+        let label = UILabel()
         label.textColor = textColor
-        label2.textColor = textColor
         label.font = font
-        label2.font = font
         label.text = countries[row].countryFlagAndName()
-        label2.text = countries[row].phoneCode
-        view.addSubview(label2)
-        view.addSubview(label)
-        
-        return view
+        return label
     }
 }
 
@@ -132,25 +123,5 @@ extension ECCCountryPickerTextField: UIPickerViewDelegate, UIPickerViewDataSourc
 extension ECCCountryPickerTextField: ECCTableViewControllerDelegate {
     func didSelectCountry(country: Country, in tableviewController: UITableViewController) {
         selectedCountry = country
-    }
-}
-
-
-@IBDesignable class PaddingLabel: UILabel {
-    
-    @IBInspectable var topInset: CGFloat = 5.0
-    @IBInspectable var bottomInset: CGFloat = 5.0
-    @IBInspectable var leftInset: CGFloat = 7.0
-    @IBInspectable var rightInset: CGFloat = 50.0
-    
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        super.drawText(in: rect.inset(by: insets))
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + leftInset + rightInset,
-                      height: size.height + topInset + bottomInset)
     }
 }
