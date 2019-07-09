@@ -12,7 +12,7 @@
 		3D98D26922D33AC200A2BD23 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98D26822D33AC200A2BD23 /* Country.swift */; };
 		3D98D26B22D33AE200A2BD23 /* ECCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D98D26A22D33AE200A2BD23 /* ECCTableViewCell.xib */; };
 		3D98D26D22D33AF600A2BD23 /* ECCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D98D26C22D33AF600A2BD23 /* ECCTableViewCell.swift */; };
-		3D98D26E22D33BF300A2BD23 /* EmojiCountrySelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D98D25D22D32D3B00A2BD23 /* EmojiCountrySelector.h */; };
+		3D98D26E22D33BF300A2BD23 /* EmojiCountrySelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D98D25D22D32D3B00A2BD23 /* EmojiCountrySelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
